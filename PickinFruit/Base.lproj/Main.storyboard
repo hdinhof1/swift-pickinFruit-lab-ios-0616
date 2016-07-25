@@ -37,7 +37,9 @@
                             </view>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqg-RL-roi">
                                 <rect key="frame" x="0.0" y="120" width="375" height="233"/>
-                                <accessibility key="accessibilityConfiguration" identifier="Fruit Picker" label="Fruit Picker"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Fruit Picker" label="Fruit Picker">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9t-CE-N2h">
                                 <rect key="frame" x="187" y="167" width="0.0" height="0.0"/>

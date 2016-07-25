@@ -25,23 +25,25 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         self.fruitPicker.delegate = self
         self.fruitPicker.dataSource = self
         
+        setFruitsStartingPosition()
+        
     }
     
     @IBAction func spinButtonTapped(sender: UIButton) {
-        let firstRandomItemIndex = Int(arc4random_uniform(UInt32(self.fruitsArray.count)))
-        let secondRandomItemIndex = Int(arc4random_uniform(UInt32(self.fruitsArray.count)))
-        let thirdRandomItemIndex = Int(arc4random_uniform(UInt32(self.fruitsArray.count)))
+        let firstRandomRowInPicker = Int(arc4random_uniform(UInt32(self.fruitsArray.count * 3)))
+        let secondRandomRowInPicker = Int(arc4random_uniform(UInt32(self.fruitsArray.count * 3)))
+        let thirdRandomRowInPicker = Int(arc4random_uniform(UInt32(self.fruitsArray.count * 3)))
         
         
-        self.fruitPicker.selectRow(firstRandomItemIndex, inComponent: 0, animated: true)
-        self.fruitPicker.selectRow(secondRandomItemIndex, inComponent: 1, animated: true)
-        self.fruitPicker.selectRow(thirdRandomItemIndex, inComponent: 2, animated: true)
+        self.fruitPicker.selectRow(firstRandomRowInPicker, inComponent: 0, animated: true)
+        self.fruitPicker.selectRow(secondRandomRowInPicker, inComponent: 1, animated: true)
+        self.fruitPicker.selectRow(thirdRandomRowInPicker, inComponent: 2, animated: true)
         
-        let firstItem = self.fruitsArray[self.fruitPicker.selectedRowInComponent(0)]
-        let secondItem = self.fruitsArray[self.fruitPicker.selectedRowInComponent(1)]
-        let thirdItem = self.fruitsArray[self.fruitPicker.selectedRowInComponent(2)]
+        let firstItem = self.fruitsArray[self.fruitPicker.selectedRowInComponent(0) % self.fruitsArray.count]
+        let secondItem = self.fruitsArray[self.fruitPicker.selectedRowInComponent(1) % self.fruitsArray.count]
+        let thirdItem = self.fruitsArray[self.fruitPicker.selectedRowInComponent(2) % self.fruitsArray.count]
         
-        print("\(firstRandomItemIndex) \(secondRandomItemIndex) \(thirdRandomItemIndex)")
+        print("\(firstRandomRowInPicker % self.fruitsArray.count) \(secondRandomRowInPicker % self.fruitsArray.count) \(thirdRandomRowInPicker % self.fruitsArray.count)")
         print(firstItem + secondItem + thirdItem)
         
         if firstItem == secondItem && secondItem == thirdItem {
@@ -56,14 +58,20 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.fruitsArray.count
+        return self.fruitsArray.count * 3
     }
     
     //Delegate protocol methods
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return self.fruitsArray[row]
+        return self.fruitsArray[row % self.fruitsArray.count]
     }
     
+    func setFruitsStartingPosition() {
+        
+        self.fruitPicker.selectRow(4, inComponent: 0, animated: false)
+        self.fruitPicker.selectRow(5, inComponent: 1, animated: false)
+        self.fruitPicker.selectRow(6, inComponent: 2, animated: false)
+    }
 }
 
 // MARK: Set Up
