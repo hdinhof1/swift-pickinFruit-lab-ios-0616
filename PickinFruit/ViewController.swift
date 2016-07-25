@@ -14,6 +14,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var fruitPicker: UIPickerView!
     
+    private let numberOfRows = 1000
+    
     var fruitsArray = ["🍎", "🍊", "🍌", "🍐", "🍇", "🍉", "🍓", "🍒", "🍍"]
     
     override func viewDidLoad() {
@@ -30,9 +32,9 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     @IBAction func spinButtonTapped(sender: UIButton) {
-        let firstRandomRowInPicker = Int(arc4random_uniform(UInt32(self.fruitsArray.count * 3)))
-        let secondRandomRowInPicker = Int(arc4random_uniform(UInt32(self.fruitsArray.count * 3)))
-        let thirdRandomRowInPicker = Int(arc4random_uniform(UInt32(self.fruitsArray.count * 3)))
+        let firstRandomRowInPicker = Int(arc4random_uniform(UInt32(numberOfRows)))
+        let secondRandomRowInPicker = Int(arc4random_uniform(UInt32(numberOfRows)))
+        let thirdRandomRowInPicker = Int(arc4random_uniform(UInt32(numberOfRows)))
         
         
         self.fruitPicker.selectRow(firstRandomRowInPicker, inComponent: 0, animated: true)
@@ -42,6 +44,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let firstItem = self.fruitsArray[self.fruitPicker.selectedRowInComponent(0) % self.fruitsArray.count]
         let secondItem = self.fruitsArray[self.fruitPicker.selectedRowInComponent(1) % self.fruitsArray.count]
         let thirdItem = self.fruitsArray[self.fruitPicker.selectedRowInComponent(2) % self.fruitsArray.count]
+        
         
         print("\(firstRandomRowInPicker % self.fruitsArray.count) \(secondRandomRowInPicker % self.fruitsArray.count) \(thirdRandomRowInPicker % self.fruitsArray.count)")
         print(firstItem + secondItem + thirdItem)
@@ -58,7 +61,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.fruitsArray.count * 3
+        return numberOfRows
     }
     
     //Delegate protocol methods
