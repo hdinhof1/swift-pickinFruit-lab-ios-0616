@@ -37,11 +37,12 @@
                             </view>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hqg-RL-roi">
                                 <rect key="frame" x="0.0" y="120" width="375" height="233"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Fruit Picker" label="Fruit Picker"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z9t-CE-N2h">
-                                <rect key="frame" x="187" y="166.5" width="0.0" height="0.0"/>
+                                <rect key="frame" x="187" y="167" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="46"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fP-tt-v6H" userLabel="Btm Background View">
@@ -50,6 +51,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrZ-qi-3Ge">
                                 <rect key="frame" x="137" y="459" width="101" height="101"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Spin Button" label="Spin Button"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="OrZ-qi-3Ge" secondAttribute="height" multiplier="1:1" id="E6G-g6-TkC"/>
                                 </constraints>
@@ -85,6 +87,7 @@
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="fruitPicker" destination="Hqg-RL-roi" id="99E-06-eW3"/>
                         <outlet property="resultLabel" destination="z9t-CE-N2h" id="jR8-KO-Jss"/>
                         <outlet property="spinButton" destination="OrZ-qi-3Ge" id="j09-Jd-I6p"/>
                     </connections>
